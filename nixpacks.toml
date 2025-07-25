@@ -1,0 +1,11 @@
+[build]
+baseImage = "python:3.9"
+
+[build.env]
+PYTHONUNBUFFERED = "1"
+
+[build.install]
+cmds = ["pip install -r requirements.txt"]
+
+[build.start]
+cmd = "uvicorn app:app --host 0.0.0.0 --port 8000"
