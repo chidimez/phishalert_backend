@@ -26,3 +26,9 @@ app.include_router(auth.router, tags=["Authentication"])
 app.include_router(gmail_oauth.router, tags=["Gmail OAuth"])
 #app.include_router(mailbox.router)
 #app.include_router(user_settings.router)
+
+
+# Define the base endpoint
+@app.get("/api/", description="Base endpoint.", tags=["Base"])
+async def root() -> str:
+    return "API is running. Navigate to /docs for the GUI."
