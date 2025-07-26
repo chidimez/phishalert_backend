@@ -1,2 +1,2 @@
 [build.start]
-cmd = "uvicorn app:app --port 3000"
+cmd = "uvicorn app:app"
