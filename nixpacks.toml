@@ -1,3 +1,2 @@
-# nixpacks.toml
-[start]
-cmd = "fastapi run main.py --port 3000"
+[build.start]
+cmd = "uvicorn app:app --port 3000"
