@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 
 load_dotenv()
-from fastapi import FastAPI
+from starlette import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 
