@@ -28,3 +28,6 @@ app.include_router(gmail_oauth.router, tags=["Gmail OAuth"])
 #app.include_router(user_settings.router)
 
 
+@app.get("/test")
+def test():
+    return {"message": "Test route working!"}
