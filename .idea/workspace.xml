@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="added test route">
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed secure cookies">
+      <change afterPath="$PROJECT_DIR$/utils/handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -135,7 +138,8 @@
       <workItem from="1753486467570" duration="149000" />
       <workItem from="1753486638263" duration="12033000" />
       <workItem from="1753533688822" duration="3256000" />
-      <workItem from="1753608809059" duration="5458000" />
+      <workItem from="1753608809059" duration="6770000" />
+      <workItem from="1753646052965" duration="6277000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Setup">
       <option name="closed" value="true" />
@@ -273,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753501856852</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="fixed secure cookies">
+      <option name="closed" value="true" />
+      <created>1753625494755</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1753625494756</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,7 +310,8 @@
     <MESSAGE value="fixed setup for hosting" />
     <MESSAGE value="added toml" />
     <MESSAGE value="added test route" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test route" />
+    <MESSAGE value="fixed secure cookies" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed secure cookies" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1753276115143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

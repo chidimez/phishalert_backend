@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from services.auth import get_current_user
 from models.user import User
+from utils.handlers import json_response
 
 router = APIRouter(
     prefix="/dashboard",
@@ -10,4 +11,7 @@ router = APIRouter(
 
 @router.get("/")
 def get_dashboard(user: User = Depends(get_current_user)):
-    return {"message": f"Welcome back {user.email}!"}
+    return json_response({
+        "message": "Profile fetched",
+        "user": user
+    })

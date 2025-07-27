@@ -6,6 +6,15 @@ from starlette.middleware.cors import CORSMiddleware
 
 
 from routers import auth, gmail_oauth
+from fastapi import FastAPI
+from utils.handlers import http_exception_handler, global_exception_handler
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from utils.handlers import http_exception_handler, global_exception_handler
+from fastapi import FastAPI, HTTPException
+from utils.handlers import http_exception_handler, global_exception_handler
+
+
+
 
 app = FastAPI()
 
@@ -31,3 +40,6 @@ app.include_router(gmail_oauth.router, tags=["Gmail OAuth"])
 @app.get("/test")
 def test():
     return {"message": "Test route working!"}
+
+app.add_exception_handler(HTTPException, http_exception_handler)
+app.add_exception_handler(Exception, global_exception_handler)
