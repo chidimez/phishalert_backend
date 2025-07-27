@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed structure and setup for hosting">
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="added test route">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +133,9 @@
       <workItem from="1753177164572" duration="20424000" />
       <workItem from="1753276104592" duration="8618000" />
       <workItem from="1753486467570" duration="149000" />
-      <workItem from="1753486638263" duration="968000" />
+      <workItem from="1753486638263" duration="12033000" />
+      <workItem from="1753533688822" duration="3256000" />
+      <workItem from="1753608809059" duration="5458000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Setup">
       <option name="closed" value="true" />
@@ -176,7 +177,103 @@
       <option name="project" value="LOCAL" />
       <updated>1753487462378</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fixed structure and setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753487918108</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1753487918108</updated>
+    </task>
+    <task id="LOCAL-00007" summary="setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753488152190</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1753488152190</updated>
+    </task>
+    <task id="LOCAL-00008" summary="setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753489501701</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1753489501701</updated>
+    </task>
+    <task id="LOCAL-00009" summary="fixed setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753491734317</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1753491734317</updated>
+    </task>
+    <task id="LOCAL-00010" summary="fixed setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753493130073</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1753493130073</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fixed setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753493153928</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1753493153928</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fixed setup for hosting">
+      <option name="closed" value="true" />
+      <created>1753493396459</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1753493396459</updated>
+    </task>
+    <task id="LOCAL-00013" summary="added toml">
+      <option name="closed" value="true" />
+      <created>1753494328847</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1753494328847</updated>
+    </task>
+    <task id="LOCAL-00014" summary="added toml">
+      <option name="closed" value="true" />
+      <created>1753497711647</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1753497711647</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added toml">
+      <option name="closed" value="true" />
+      <created>1753498291319</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1753498291319</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added toml">
+      <option name="closed" value="true" />
+      <created>1753498425947</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1753498425947</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added test route">
+      <option name="closed" value="true" />
+      <created>1753501856852</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1753501856852</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -195,8 +292,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Setup" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
     <MESSAGE value="fixed structure and setup for hosting" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed structure and setup for hosting" />
+    <MESSAGE value="setup for hosting" />
+    <MESSAGE value="fixed setup for hosting" />
+    <MESSAGE value="added toml" />
+    <MESSAGE value="added test route" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test route" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1753276115143" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

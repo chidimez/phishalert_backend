@@ -39,11 +39,12 @@ def login(data: LoginRequest):
         key="access_token",
         value=token,
         httponly=True,
-        secure=False,  # True in production with HTTPS
-        samesite="lax",  # Lax is good default
+        secure=True,  # Always True in production with HTTPS
+        samesite="none",  # or "none" if cross-site frontend/backend
         max_age=3600,
         path="/"
     )
+
     return response
 
 @router.post("/forgot-password")
