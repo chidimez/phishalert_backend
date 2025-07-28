@@ -88,7 +88,7 @@ def profile(user = Depends(get_current_user)):
         "user": user
     })
 
-@router.post("/auth/logout")
+@router.post("/logout")
 def logout():
     response = json_response({
         "message": "Logged out"
