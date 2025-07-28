@@ -19,17 +19,18 @@ from utils.handlers import http_exception_handler, global_exception_handler
 app = FastAPI()
 
 # CORS setup
+origins = [
+    "http://localhost:3000",  # local dev
+    "https://phishalert.azronix.xyz",  # deployed site
+    "*",  # Allows all origins (not recommended for production)
+]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",  # local dev
-        "https://phishalert.azronix.xyz",  # deployed site
-    ],  # or ["*"] during dev
+    allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"], # allow methods
+    allow_headers=["*"], # allow headers
 )
-
 
 # Public routes
 app.include_router(auth.router, tags=["Authentication"])
