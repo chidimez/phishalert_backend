@@ -21,7 +21,10 @@ app = FastAPI()
 # CORS setup
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # or ["*"] during dev
+    allow_origins=[
+        "http://localhost:3000",  # local dev
+        "https://phishalert.azronix.xyz",  # deployed site
+    ],  # or ["*"] during dev
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
