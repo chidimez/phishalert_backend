@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cors origin *">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +143,7 @@
       <workItem from="1753899523854" duration="2000" />
       <workItem from="1753906494500" duration="1789000" />
       <workItem from="1753964636262" duration="47000" />
-      <workItem from="1753999783858" duration="4746000" />
+      <workItem from="1753999783858" duration="5508000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Setup">
       <option name="closed" value="true" />
@@ -384,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754003651556</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fixed cors origin *">
+      <option name="closed" value="true" />
+      <created>1754005031283</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1754005031283</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
