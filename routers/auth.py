@@ -44,7 +44,7 @@ def login(data: LoginRequest):
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response = RedirectResponse("/auth/profile" ,status_code=302)
+    response = RedirectResponse("https://phishalert.azronix.xyz/dashboard" ,status_code=302)
 
     response.set_cookie(
         key="access_token",
