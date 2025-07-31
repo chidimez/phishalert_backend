@@ -22,7 +22,7 @@ app = FastAPI()
 origins = [
     "http://localhost:3000",  # local dev
     "https://phishalert.azronix.xyz",  # deployed site
-    "*",  # Allows all origins (not recommended for production)
+    #"*",  # Allows all origins (not recommended for production)
 ]
 app.add_middleware(
     CORSMiddleware,
