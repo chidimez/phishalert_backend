@@ -50,7 +50,7 @@ def login(data: LoginRequest):
         value=token,
         httponly=True,
         secure=True,  # Always True in production with HTTPS
-        samesite="none",  # or "none" if cross-site frontend/backend
+        samesite="True",  # or "none" if cross-site frontend/backend
         max_age=3600,
         path="/"
     )

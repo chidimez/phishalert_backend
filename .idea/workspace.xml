@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cors">
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cors origin *">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,6 +142,7 @@
       <workItem from="1753899523854" duration="2000" />
       <workItem from="1753906494500" duration="1789000" />
       <workItem from="1753964636262" duration="47000" />
+      <workItem from="1753999783858" duration="2966000" />
     </task>
     <task id="LOCAL-00001" summary="Initial Setup">
       <option name="closed" value="true" />
@@ -359,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1753672498509</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fixed cors origin *">
+      <option name="closed" value="true" />
+      <created>1753999904073</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1753999904073</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -387,7 +396,8 @@
     <MESSAGE value="fixed secure cookies" />
     <MESSAGE value="fixed auth endpoints" />
     <MESSAGE value="fixed cors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed cors" />
+    <MESSAGE value="fixed cors origin *" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed cors origin *" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1753964653822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
