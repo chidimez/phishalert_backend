@@ -25,10 +25,11 @@ def get_current_user(request: Request, db: Session = Depends(get_db)) -> type[Us
     token = request.cookies.get("session_token")
     print("token",token)
     if not token:
-        raise HTTPException(status_code=401, detail="Not authenticated")
+        raise HTTPException(status_code=407, detail="Not authenticated")
 
     try:
         payload = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        print("payload", payload.get("sub"))
         email: str = payload.get("sub")
         if not email:
             raise HTTPException(status_code=401, detail="Invalid token")
