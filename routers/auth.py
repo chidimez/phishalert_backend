@@ -7,7 +7,7 @@ from utils.handlers import json_response
 from utils.jwt import decode_token
 from fastapi.responses import JSONResponse
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response
 from jose import JWTError, jwt
 
 #router = APIRouter()
@@ -37,27 +37,22 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest):
+def login(data: LoginRequest,response: Response):
     token = authenticate_user(data.email, data.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-
-    response = json_response({
-        "message": "Login successful"
-    })
     response.set_cookie(
-        key="access_token",
-        value=token,
+        key="test_cookie",
+        value="this_is_a_test",
         httponly=True,
-        secure=True,  # Always True in production with HTTPS
-        samesite="None",  # or "none" if cross-site frontend/backend
-        max_age=36000,
-        domain=".azronix.xyz",
+        secure=True,  # Secure: only over HTTPS
+        samesite="none",  # Allow cross-site
+        max_age=3600,  # 1 hour
+        domain=".azronix.xyz",  # Make cookie available across subdomains
         path="/"
     )
-
-    return response
+    return {"message": "Test cookie set"}
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):
