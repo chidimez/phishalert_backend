@@ -51,7 +51,7 @@ def login(data: LoginRequest):
         max_age=3600,  # 1 hour
         domain=".azronix.xyz",  # Make cookie available across subdomains
         path="/"
-    )
+    );
     return {"message": "Test cookie set"}
 
 @router.post("/forgot-password")
