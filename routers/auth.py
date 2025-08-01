@@ -43,8 +43,8 @@ def login(data: LoginRequest, response: Response):
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     response.set_cookie(
-        key="test_cookie",
-        value="this_is_a_test",
+        "Authorization",
+        value=token,
         httponly=True,
         secure=True,
         samesite="none",
