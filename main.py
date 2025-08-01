@@ -17,7 +17,7 @@ app = FastAPI(redirect_slashes=False)
 
 # CORS setup
 origins = [
-    "http://localhost:3000",  # local dev
+    #"http://localhost:3000",  # local dev
     "https://phishalert.azronix.xyz",  # deployed site
     #"*",  # Allows all origins (not recommended for production)
 ]

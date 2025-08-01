@@ -37,12 +37,12 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest,response: Response):
+def login(data: LoginRequest):
     token = authenticate_user(data.email, data.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response.set_cookie(
+    Response.set_cookie(
         key="test_cookie",
         value="this_is_a_test",
         httponly=True,
