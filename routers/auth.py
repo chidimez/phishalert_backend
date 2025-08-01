@@ -43,7 +43,7 @@ def login(data: LoginRequest, response: Response):
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
     response.set_cookie(
-        "Authorization",
+        key="session_token",
         value=token,
         httponly=True,
         secure=True,
@@ -53,7 +53,7 @@ def login(data: LoginRequest, response: Response):
         path="/"
     )
 
-    return {"access_token": token, "token_type": "bearer"}
+    return {"session_token": token, "token_type": "bearer"}
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):
