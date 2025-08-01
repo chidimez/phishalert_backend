@@ -5,12 +5,13 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
 from routers import auth, gmail_oauth
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from utils.handlers import http_exception_handler, global_exception_handler
 from starlette.exceptions import HTTPException as StarletteHTTPException
 from utils.handlers import http_exception_handler, global_exception_handler
 from fastapi import FastAPI, HTTPException
 from utils.handlers import http_exception_handler, global_exception_handler
+
 
 app = FastAPI(redirect_slashes=False)
 
@@ -43,6 +44,20 @@ app.include_router(gmail_oauth.router, tags=["Gmail OAuth"])
 @app.get("/test")
 def test():
     return {"message": "Test route working!"}
+
+@app.get("/set-test-cookie")
+def set_test_cookie(response: Response):
+    response.set_cookie(
+        key="test_cookie",
+        value="this_is_a_test",
+        httponly=True,
+        secure=True,             # Secure: only over HTTPS
+        samesite="None",         # Allow cross-site
+        max_age=3600,            # 1 hour
+        domain=".azronix.xyz",   # Make cookie available across subdomains
+        path="/"
+    )
+    return {"message": "Test cookie set"}
 
 
 app.add_exception_handler(HTTPException, http_exception_handler)
