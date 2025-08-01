@@ -44,18 +44,16 @@ def login(data: LoginRequest):
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response = RedirectResponse("/" ,status_code=302)
-
+    response = JSONResponse(content={"message": "Login successful"})
     response.set_cookie(
         key="access_token",
         value=token,
         httponly=True,
-        secure=True,  # Always True in production with HTTPS
-        samesite="none",  # or "none" if cross-site frontend/backend
+        secure=True,
+        samesite="none",
         max_age=3600,
         path="/"
     )
-
     return response
 
 @router.post("/forgot-password")
