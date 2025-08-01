@@ -52,7 +52,7 @@ def set_test_cookie(response: Response):
         value="this_is_a_test",
         httponly=True,
         secure=True,             # Secure: only over HTTPS
-        samesite="None",         # Allow cross-site
+        samesite="none",         # Allow cross-site
         max_age=3600,            # 1 hour
         domain=".azronix.xyz",   # Make cookie available across subdomains
         path="/"
