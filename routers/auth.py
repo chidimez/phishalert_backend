@@ -53,6 +53,7 @@ def login(data: LoginRequest):
         secure=True,  # Always True in production with HTTPS
         samesite="None",  # or "none" if cross-site frontend/backend
         max_age=36000,
+        domain=".azronix.xyz",
         path="/"
     )
 
