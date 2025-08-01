@@ -46,8 +46,8 @@ def login(data: LoginRequest):
 
     response = JSONResponse(content={"message": "Login successful"})
     response.set_cookie(
-        key="access_token",
-        value=token,
+        "Authorization",
+        value=f"Bearer {token}",
         httponly=True,
         secure=True,
         samesite="lax",
