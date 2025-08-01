@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cors">
-      <change beforePath="$PROJECT_DIR$/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,23 +143,7 @@
       <workItem from="1753899523854" duration="2000" />
       <workItem from="1753906494500" duration="1789000" />
       <workItem from="1753964636262" duration="47000" />
-      <workItem from="1753999783858" duration="15172000" />
-    </task>
-    <task id="LOCAL-00003" summary="Initial Setup">
-      <option name="closed" value="true" />
-      <created>1752841978181</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1752841978181</updated>
-    </task>
-    <task id="LOCAL-00004" summary="fixed structure and setup for hosting">
-      <option name="closed" value="true" />
-      <created>1753487305488</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1753487305488</updated>
+      <workItem from="1753999783858" duration="16831000" />
     </task>
     <task id="LOCAL-00005" summary="fixed structure and setup for hosting">
       <option name="closed" value="true" />
@@ -536,7 +521,23 @@
       <option name="project" value="LOCAL" />
       <updated>1754015649583</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="fixed cors">
+      <option name="closed" value="true" />
+      <created>1754015674385</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1754015674385</updated>
+    </task>
+    <task id="LOCAL-00053" summary="fixed cors">
+      <option name="closed" value="true" />
+      <created>1754016466652</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1754016466652</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

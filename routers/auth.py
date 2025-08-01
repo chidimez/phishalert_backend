@@ -81,9 +81,16 @@ def reset_password_route(data: ResetPasswordRequest):
 
 @router.get("/profile", response_model=ProfileResponse)
 def profile(user = Depends(get_current_user)):
+    user_data = {
+        "id": user.id,
+        "email": user.email,
+        "firstname": user.firstname,
+        "lastname": user.lastname,
+        "is_active": user.is_active,
+    }
     return json_response({
         "message": "Profile fetched",
-        "user": user
+        "user": user_data
     })
 
 @router.post("/logout")
