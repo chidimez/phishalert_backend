@@ -50,7 +50,7 @@ def login(data: LoginRequest):
         value=token,
         httponly=True,
         secure=True,
-        samesite="none",
+        samesite="lax",
         max_age=3600,
         path="/"
     )
