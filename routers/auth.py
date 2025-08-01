@@ -1,6 +1,4 @@
 from fastapi import APIRouter, HTTPException, Depends
-from starlette.responses import RedirectResponse
-
 from schemas.auth import *
 from services.auth import *
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -44,8 +42,10 @@ def login(data: LoginRequest):
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response = RedirectResponse("/" ,status_code=302)
 
+    response = json_response({
+        "message": "Login successful"
+    })
     response.set_cookie(
         key="access_token",
         value=token,
