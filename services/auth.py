@@ -23,6 +23,7 @@ from jose import JWTError, jwt
 
 def get_current_user(request: Request, db: Session = Depends(get_db)) -> type[User]:
     token = request.cookies.get("session_token")
+    print(token)
     if not token:
         raise HTTPException(status_code=401, detail="Not authenticated")
 
