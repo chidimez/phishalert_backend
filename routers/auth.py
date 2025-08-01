@@ -52,7 +52,7 @@ def login(data: LoginRequest):
         httponly=True,
         secure=True,  # Always True in production with HTTPS
         samesite="None",  # or "none" if cross-site frontend/backend
-        max_age=3600,
+        max_age=36000,
         path="/"
     )
 
