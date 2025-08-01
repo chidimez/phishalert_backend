@@ -37,22 +37,23 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest):
+def login(data: LoginRequest, response: Response):
     token = authenticate_user(data.email, data.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    Response.set_cookie(
+    response.set_cookie(
         key="test_cookie",
         value="this_is_a_test",
         httponly=True,
-        secure=True,  # Secure: only over HTTPS
-        samesite="none",  # Allow cross-site
-        max_age=3600,  # 1 hour
-        domain=".azronix.xyz",  # Make cookie available across subdomains
+        secure=True,
+        samesite="none",
+        max_age=3600,
+        domain=".azronix.xyz",
         path="/"
-    );
-    return {"message": "Test cookie set"}
+    )
+
+    return {"access_token": token, "token_type": "bearer"}
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):
