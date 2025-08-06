@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cookies in development">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cookies in development" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -145,15 +143,7 @@
       <workItem from="1753999783858" duration="17411000" />
       <workItem from="1754053524964" duration="1574000" />
       <workItem from="1754301636505" duration="91000" />
-      <workItem from="1754464984090" duration="2177000" />
-    </task>
-    <task id="LOCAL-00007" summary="setup for hosting">
-      <option name="closed" value="true" />
-      <created>1753488152190</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1753488152190</updated>
+      <workItem from="1754464984090" duration="2520000" />
     </task>
     <task id="LOCAL-00008" summary="setup for hosting">
       <option name="closed" value="true" />
@@ -539,7 +529,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754466023914</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="fixed cookies in development">
+      <option name="closed" value="true" />
+      <created>1754470028971</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1754470028971</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

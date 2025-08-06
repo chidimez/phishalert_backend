@@ -62,16 +62,11 @@ def login(data: LoginRequest, response: Response, request: Request):
     }
 
     # Only in development, and only for localhost:3000
-    if IS_DEV:
-        if "localhost:3000" in origin:
-            # Relax cookie for localhost dev
-            cookie_params["secure"] = False  # Allow HTTP (insecure)
-            cookie_params["samesite"] = "lax"  # Prevent rejection by browsers
-            cookie_params.pop("domain", None)  # No domain for localhost
-        else:
-            # Explicitly forbid setting insecure cookie to non-localhost origins
-            raise HTTPException(status_code=403,
-                                detail="Insecure cookies allowed only from localhost:3000 in development mode")
+    if IS_DEV and "localhost:3000" in origin:
+        cookie_params["secure"] = False              # Allow HTTP (insecure)
+        cookie_params["samesite"] = "lax"            # Prevent rejection by browsers
+        cookie_params.pop("domain", None)            # No domain for localhost
+
 
     response.set_cookie(**cookie_params)
 
