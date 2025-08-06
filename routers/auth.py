@@ -7,8 +7,13 @@ from utils.handlers import json_response
 from utils.jwt import decode_token
 from fastapi.responses import JSONResponse
 
-from fastapi import APIRouter, Depends, HTTPException, Response
+from fastapi import Request,APIRouter, Depends, HTTPException, Response
 from jose import JWTError, jwt
+import os
+
+ENV = os.getenv("ENV", "development")
+IS_DEV = ENV == "development"
+
 
 #router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/swagger-login")
@@ -37,23 +42,41 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest, response: Response):
+def login(data: LoginRequest, response: Response, request: Request):
     token = authenticate_user(data.email, data.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response.set_cookie(
-        key="session_token",
-        value=token,
-        httponly=True,
-        secure=True,
-        samesite="none",
-        max_age=3600,
-        domain=".azronix.xyz",
-        path="/"
-    )
+    origin = request.headers.get("origin", "")
+
+    # Default: production-grade cookie
+    cookie_params = {
+        "key": "session_token",
+        "value": token,
+        "httponly": True,
+        "secure": True,
+        "samesite": "none",
+        "max_age": 3600,
+        "domain": ".azronix.xyz",
+        "path": "/"
+    }
+
+    # Only in development, and only for localhost:3000
+    if IS_DEV:
+        if "localhost:3000" in origin:
+            # Relax cookie for localhost dev
+            cookie_params["secure"] = False  # Allow HTTP (insecure)
+            cookie_params["samesite"] = "lax"  # Prevent rejection by browsers
+            cookie_params.pop("domain", None)  # No domain for localhost
+        else:
+            # Explicitly forbid setting insecure cookie to non-localhost origins
+            raise HTTPException(status_code=403,
+                                detail="Insecure cookies allowed only from localhost:3000 in development mode")
+
+    response.set_cookie(**cookie_params)
 
     return {"session_token": token, "token_type": "bearer"}
+
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):
