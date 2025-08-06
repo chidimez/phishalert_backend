@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cors">
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cookies in development">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/mailbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,15 +145,7 @@
       <workItem from="1753999783858" duration="17411000" />
       <workItem from="1754053524964" duration="1574000" />
       <workItem from="1754301636505" duration="91000" />
-      <workItem from="1754464984090" duration="835000" />
-    </task>
-    <task id="LOCAL-00006" summary="fixed structure and setup for hosting">
-      <option name="closed" value="true" />
-      <created>1753487918108</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1753487918108</updated>
+      <workItem from="1754464984090" duration="2177000" />
     </task>
     <task id="LOCAL-00007" summary="setup for hosting">
       <option name="closed" value="true" />
@@ -541,7 +531,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754017396708</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="fixed cookies in development">
+      <option name="closed" value="true" />
+      <created>1754466023914</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1754466023914</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,7 +568,8 @@
     <MESSAGE value="fixed auth endpoints" />
     <MESSAGE value="fixed cors origin *" />
     <MESSAGE value="fixed cors" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed cors" />
+    <MESSAGE value="fixed cookies in development" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed cookies in development" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1753964653822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
