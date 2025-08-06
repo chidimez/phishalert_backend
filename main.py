@@ -59,6 +59,12 @@ def set_test_cookie(response: Response):
     )
     return {"message": "Test cookie set"}
 
+@app.on_event("startup")
+async def list_routes():
+    print("\n📋 Registered Routes:")
+    for route in app.routes:
+        if hasattr(route, "methods"):
+            print(f"{list(route.methods)}\t{route.path}")
 
 app.add_exception_handler(HTTPException, http_exception_handler)
 app.add_exception_handler(Exception, global_exception_handler)

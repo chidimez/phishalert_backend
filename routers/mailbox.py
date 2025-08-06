@@ -15,7 +15,7 @@ router = APIRouter(
     dependencies=[Depends(get_current_user)]  # Secures all routes here
 )
 
-@router.get("/")
+@router.get("")
 def list_mailboxes(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user),
@@ -44,7 +44,7 @@ def delete_mailbox(
     return delete_single_mailbox(db, user.id, mailbox_id)
 
 
-@router.delete("/")
+@router.delete("")
 def delete_all_user_mailboxes(
     db: Session = Depends(get_db),
     user: User = Depends(get_current_user)
