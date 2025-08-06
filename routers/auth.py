@@ -66,7 +66,7 @@ def login(data: LoginRequest, response: Response, request: Request):
     # Only in development, and only for localhost:3000
     if IS_DEV and "localhost:3000" in origin:
         cookie_params["secure"] = False              # Allow HTTP (insecure)
-        cookie_params["samesite"] = "lax"            # Prevent rejection by browsers
+        cookie_params["samesite"] = "None"            # Prevent rejection by browsers
         #cookie_params.pop("domain", None)            # No domain for localhost
 
 
