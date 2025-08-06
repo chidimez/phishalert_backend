@@ -1,12 +1,16 @@
+import os
+
+import requests
 from sqlalchemy.orm import Session
 
 from models import MailboxConnection
 from sqlalchemy.orm import joinedload
 
-from fastapi import HTTPException
+from fastapi import HTTPException, Request
 
-from routers.gmail_oauth import refresh_gmail_access_token
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
+
+from utils.gmail_oauth import refresh_gmail_access_token
 
 
 def upsert_mailbox_connection(db: Session, user_id: int, email: str, provider: str, credentials):
@@ -85,4 +89,6 @@ def ensure_valid_gmail_token(db: Session, mailbox: MailboxConnection):
         db.commit()
         db.refresh(mailbox)
     return mailbox.access_token
+
+
 
