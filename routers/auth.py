@@ -7,13 +7,8 @@ from utils.handlers import json_response
 from utils.jwt import decode_token
 from fastapi.responses import JSONResponse
 
-from fastapi import Request,APIRouter, Depends, HTTPException, Response
+from fastapi import APIRouter, Depends, HTTPException, Response
 from jose import JWTError, jwt
-import os
-
-ENV = os.getenv("ENV", "development")
-IS_DEV = ENV == "development"
-
 
 #router = APIRouter()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/swagger-login")
@@ -42,38 +37,23 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest, response: Response, request: Request):
+def login(data: LoginRequest, response: Response):
     token = authenticate_user(data.email, data.password)
     if not token:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    origin = request.headers.get("origin", "")
-
-    # Default: production-grade cookie
-    cookie_params = {
-        "key": "session_token",
-        "value": token,
-        "httponly": True,
-        "secure": True,
-        "samesite": "none",
-        "max_age": 3600,
-        #"domain": ".azronix.xyz",
-        "path": "/"
-    }
-    if not IS_DEV:
-        cookie_params["domain"] = ".azronix.xyz"
-
-    # Only in development, and only for localhost:3000
-    if IS_DEV and "localhost:3000" in origin:
-        cookie_params["secure"] = False              # Allow HTTP (insecure)
-        cookie_params["samesite"] = "None"            # Prevent rejection by browsers
-        #cookie_params.pop("domain", None)            # No domain for localhost
-
-
-    response.set_cookie(**cookie_params)
+    response.set_cookie(
+        key="session_token",
+        value=token,
+        httponly=True,
+        secure=True,
+        samesite="none",
+        max_age=3600,
+        domain=".azronix.xyz",
+        path="/"
+    )
 
     return {"session_token": token, "token_type": "bearer"}
-
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):
