@@ -57,15 +57,17 @@ def login(data: LoginRequest, response: Response, request: Request):
         "secure": True,
         "samesite": "none",
         "max_age": 3600,
-        "domain": ".azronix.xyz",
+        #"domain": ".azronix.xyz",
         "path": "/"
     }
+    if not IS_DEV:
+        cookie_params["domain"] = ".azronix.xyz"
 
     # Only in development, and only for localhost:3000
     if IS_DEV and "localhost:3000" in origin:
         cookie_params["secure"] = False              # Allow HTTP (insecure)
         cookie_params["samesite"] = "lax"            # Prevent rejection by browsers
-        cookie_params.pop("domain", None)            # No domain for localhost
+        #cookie_params.pop("domain", None)            # No domain for localhost
 
 
     response.set_cookie(**cookie_params)
