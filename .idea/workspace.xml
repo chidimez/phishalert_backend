@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed cookies in development">
+      <change afterPath="$PROJECT_DIR$/routers/mailbox.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/gmail_oauth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/gmail_oauth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mailbox.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,15 +150,8 @@
       <workItem from="1753999783858" duration="17411000" />
       <workItem from="1754053524964" duration="1574000" />
       <workItem from="1754301636505" duration="91000" />
-      <workItem from="1754464984090" duration="7445000" />
-    </task>
-    <task id="LOCAL-00012" summary="fixed setup for hosting">
-      <option name="closed" value="true" />
-      <created>1753493396459</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1753493396459</updated>
+      <workItem from="1754464984090" duration="16180000" />
+      <workItem from="1754515737015" duration="663000" />
     </task>
     <task id="LOCAL-00013" summary="added toml">
       <option name="closed" value="true" />
@@ -539,7 +537,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754474025714</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="fixed cookies in development">
+      <option name="closed" value="true" />
+      <created>1754475697843</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1754475697844</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
