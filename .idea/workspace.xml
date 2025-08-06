@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="connect mailbox routes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -147,23 +146,7 @@
       <workItem from="1754053524964" duration="1574000" />
       <workItem from="1754301636505" duration="91000" />
       <workItem from="1754464984090" duration="16180000" />
-      <workItem from="1754515737015" duration="6964000" />
-    </task>
-    <task id="LOCAL-00019" summary="fixed auth endpoints">
-      <option name="closed" value="true" />
-      <created>1753653943967</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1753653943967</updated>
-    </task>
-    <task id="LOCAL-00020" summary="fixed auth endpoints">
-      <option name="closed" value="true" />
-      <created>1753663851277</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1753663851277</updated>
+      <workItem from="1754515737015" duration="7294000" />
     </task>
     <task id="LOCAL-00021" summary="fixed auth endpoints">
       <option name="closed" value="true" />
@@ -541,7 +524,23 @@
       <option name="project" value="LOCAL" />
       <updated>1754522980700</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="connect mailbox routes">
+      <option name="closed" value="true" />
+      <created>1754523609871</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1754523609871</updated>
+    </task>
+    <task id="LOCAL-00069" summary="connect mailbox routes">
+      <option name="closed" value="true" />
+      <created>1754523885719</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1754523885719</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
