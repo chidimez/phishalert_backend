@@ -1,5 +1,8 @@
-from sqlalchemy import UniqueConstraint, Column, Integer, String, DateTime, func, ForeignKey, Boolean
+from sqlalchemy import UniqueConstraint, Column, Integer, String, DateTime, func, ForeignKey, Boolean, Enum
 from sqlalchemy.orm import relationship
+import enum
+
+
 
 from database.session import Base
 
@@ -34,6 +37,12 @@ class MailboxConnection(Base):
     activity_logs = relationship(
         "MailboxActivityLog",
         back_populates="mailbox_connection",
+        cascade="all, delete-orphan"
+    )
+
+    scan_statuses = relationship(
+        "MailboxScanStatus",
+        back_populates="mailbox",
         cascade="all, delete-orphan"
     )
 
@@ -80,3 +89,24 @@ class MailboxActivityLog(Base):
 
     mailbox_connection = relationship("MailboxConnection", back_populates="activity_logs")
 
+
+class ScanStateEnum(str, enum.Enum):
+    pending = "pending"
+    in_progress = "in_progress"
+    completed = "completed"
+    failed = "failed"
+
+
+class MailboxScanStatus(Base):
+    __tablename__ = "mailbox_scan_statuses"
+
+    id = Column(Integer, primary_key=True)
+    mailbox_id = Column(Integer, ForeignKey("mailbox_connections.id"), nullable=False)
+    status = Column(Enum(ScanStateEnum), default=ScanStateEnum.pending)
+    progress = Column(Integer, default=0)  # 0 to 100
+    message = Column(String(512), nullable=True)
+
+    started_at = Column(DateTime(timezone=True), default=func.now())
+    completed_at = Column(DateTime(timezone=True), nullable=True)
+
+    mailbox = relationship("MailboxConnection", back_populates="scan_statuses")
