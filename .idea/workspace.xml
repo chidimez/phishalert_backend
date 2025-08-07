@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing get mailbox">
-      <change afterPath="$PROJECT_DIR$/schemas/mailbox.py" afterDir="false" />
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeder.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,15 +148,7 @@
       <workItem from="1754464984090" duration="16180000" />
       <workItem from="1754515737015" duration="17921000" />
       <workItem from="1754536404001" duration="6199000" />
-      <workItem from="1754577887945" duration="1203000" />
-    </task>
-    <task id="LOCAL-00029" summary="fixed cors origin *">
-      <option name="closed" value="true" />
-      <created>1754003140771</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1754003140771</updated>
+      <workItem from="1754577887945" duration="2117000" />
     </task>
     <task id="LOCAL-00030" summary="fixed cors origin *">
       <option name="closed" value="true" />
@@ -544,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754536900800</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="fixing mailbox routes">
+      <option name="closed" value="true" />
+      <created>1754580476685</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1754580476685</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +576,8 @@
     <MESSAGE value="connect mailbox routes" />
     <MESSAGE value="db seeders added" />
     <MESSAGE value="fixing get mailbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing get mailbox" />
+    <MESSAGE value="fixing mailbox routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing mailbox routes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1754522758677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

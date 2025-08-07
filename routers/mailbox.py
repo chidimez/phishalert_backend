@@ -3,7 +3,8 @@ from fastapi import APIRouter, Depends
 from models import MailboxConnection
 from services.auth import get_current_user
 from models.user import User
-from services.mailbox import get_mailboxes_for_user, delete_single_mailbox, delete_all_mailboxes, disconnect_mailbox
+from services.mailbox import get_mailboxes_for_user, delete_single_mailbox, delete_all_mailboxes, disconnect_mailbox, \
+    reconnect_mailbox
 from utils.handlers import json_response
 from services.session import get_db
 from sqlalchemy.orm import Session
