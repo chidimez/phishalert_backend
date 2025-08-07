@@ -24,7 +24,7 @@ class MailboxConnection(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), default=func.now(), onupdate=func.now())
 
-    # 🔥 Add cascades to related tables
+    # Add cascades to related tables
     scan_summaries = relationship(
         "MailboxScanSummary",
         back_populates="mailbox_connection",

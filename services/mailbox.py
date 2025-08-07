@@ -10,6 +10,7 @@ from fastapi import HTTPException, Request
 
 from datetime import datetime, timezone, timedelta
 
+from models.mailbox import MailboxScanSummary
 from utils.gmail_oauth import refresh_gmail_access_token
 
 
@@ -45,6 +46,11 @@ def upsert_mailbox_connection(db: Session, user_id: int, email: str, provider: s
 def get_mailboxes_for_user(db: Session, user_id: int, skip: int = 0, limit: int = 10):
     return (
         db.query(MailboxConnection)
+        .options(
+            joinedload(MailboxConnection.scan_summaries)
+                .joinedload(MailboxScanSummary.shap_insights),
+            joinedload(MailboxConnection.activity_logs)
+        )
         .filter(MailboxConnection.user_id == user_id)
         .offset(skip)
         .limit(limit)
