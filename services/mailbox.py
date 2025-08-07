@@ -10,7 +10,7 @@ from fastapi import HTTPException, Request
 
 from datetime import datetime, timezone, timedelta
 
-from models.mailbox import MailboxScanSummary
+from models.mailbox import MailboxScanSummary, MailboxActivityLog
 from utils.gmail_oauth import refresh_gmail_access_token
 
 
@@ -84,8 +84,31 @@ def disconnect_mailbox(db: Session, user_id: int, mailbox_id: int):
 
     mailbox.is_connected = False  # Assuming this field exists
     db.commit()
+
+    db.add(MailboxActivityLog(
+        mailbox_connection_id=mailbox_id,
+        activity_type="reconnected",
+        message="User manually disconnected this mailbox"
+    ))
+    db.commit()
     return {"message": "Mailbox disconnected"}
 
+def reconnect_mailbox(db: Session, user_id: int, mailbox_id: int):
+    mailbox = db.query(MailboxConnection).filter_by(id=mailbox_id, user_id=user_id).first()
+    if not mailbox:
+        raise HTTPException(status_code=404, detail="Mailbox not found")
+
+    mailbox.is_connected = True
+    db.commit()
+
+    db.add(MailboxActivityLog(
+        mailbox_connection_id=mailbox_id,
+        activity_type="reconnected",
+        message="User manually reconnected this mailbox"
+    ))
+    db.commit()
+
+    return {"message": "Mailbox reconnected"}
 
 def ensure_valid_gmail_token(db: Session, mailbox: MailboxConnection):
     if mailbox.token_expiry < datetime.now(timezone.utc):

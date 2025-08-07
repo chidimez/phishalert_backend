@@ -44,6 +44,7 @@ def seed():
             token_expiry=datetime.now(timezone.utc) + timedelta(days=30),
             last_synced=random.choice([None, datetime.now(timezone.utc)]),
             is_connected=bool(random.getrandbits(1)),
+            is_to=bool(random.getrandbits(1)),
             label=f"Inbox {i}"
         )
         db.add(mailbox)

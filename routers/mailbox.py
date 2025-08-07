@@ -51,7 +51,13 @@ def delete_all_user_mailboxes(
 ):
     return delete_all_mailboxes(db, user.id)
 
-
+@router.post("/{mailbox_id}/reconnect")
+def reconnect_user_mailbox(
+    mailbox_id: int,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user)
+):
+    return reconnect_mailbox(db, user.id, mailbox_id)
 @router.post("/{mailbox_id}/disconnect")
 def disconnect_user_mailbox(
     mailbox_id: int,
