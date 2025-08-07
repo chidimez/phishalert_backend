@@ -18,6 +18,7 @@ class MailboxConnection(Base):
     refresh_token = Column(String(2048), nullable=False)
     token_expiry = Column(DateTime, nullable=False)
     is_connected = Column(Boolean, default=True)
+    last_synced = Column(DateTime(timezone=True), nullable=True)
     label = Column(String(255), nullable=True)
 
     created_at = Column(DateTime(timezone=True), server_default=func.now())

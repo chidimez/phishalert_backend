@@ -4,7 +4,7 @@ from models.mailbox import MailboxConnection, MailboxScanSummary, MailboxActivit
 from core.security import get_password_hash
 
 from faker import Faker
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import random
 
 fake = Faker()
@@ -41,7 +41,8 @@ def seed():
             email=email,
             access_token="mock_access_token_" + str(i),
             refresh_token="mock_refresh_token_" + str(i),
-            token_expiry=datetime.utcnow() + timedelta(days=30),
+            token_expiry=datetime.now(timezone.utc) + timedelta(days=30),
+            last_synced=random.choice([None, datetime.now(timezone.utc)]),
             is_connected=bool(random.getrandbits(1)),
             label=f"Inbox {i}"
         )
