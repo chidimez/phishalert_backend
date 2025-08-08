@@ -11,6 +11,7 @@ from fastapi import HTTPException, Request
 from datetime import datetime, timezone, timedelta
 
 from models.mailbox import MailboxScanSummary, MailboxActivityLog
+from services.activity_logger import log_user_activity
 from utils.gmail_oauth import refresh_gmail_access_token
 
 
@@ -40,6 +41,15 @@ def upsert_mailbox_connection(db: Session, user_id: int, email: str, provider: s
         db.add(new_conn)
         db.commit()
         db.refresh(new_conn)
+
+        log_user_activity(
+            db=db,
+            user_id=user_id,
+            title="Mailbox Connected",
+            activity_type="mailbox_connected",
+            message=f"Connected Gmail mailbox: {email}"
+        )
+
         return new_conn
 
 

@@ -1,9 +1,10 @@
 from datetime import datetime, timedelta
 from typing import Any
-
+from pydantic import EmailStr
 from core.security import get_password_hash, verify_password
 from core.email_utils import send_email
 from database.session import SessionLocal
+from services.activity_logger import log_user_activity
 from utils.jwt import create_access_token
 import random, string
 
@@ -14,6 +15,10 @@ from services.session import get_db
 from sqlalchemy.orm import Session
 from models.user import User  # import your user model
 from core.config import settings
+
+# services/auth.py
+from dataclasses import dataclass
+
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
 
@@ -63,15 +68,33 @@ def register_user(email, firstname, lastname, password):
     db.add(new_user)
     db.commit()
     send_email("Welcome to PhishAlert", email, "welcome.html", {"email": email})
+
+    log_user_activity(
+        db=db,
+        user_id=new_user.id,
+        title="Registered",
+        activity_type="mailbox_connected",
+        message=f"New account registered: {email}"
+    )
+
     return new_user
 
 
-def authenticate_user(email, password):
-    db = SessionLocal()
-    user = db.query(User).filter(User.email == email).first()
-    if not user or not verify_password(password, user.hashed_password):
+
+@dataclass
+class AuthResult:
+    user: User
+    token: str
+
+def authenticate_user(db: Session, email: str, password: str) -> AuthResult | None:
+    user_instance = db.query(User).filter(User.email == email).first()
+    if not user_instance or not verify_password(password, user_instance.hashed_password):
         return None
-    return create_access_token({"sub": user.email})
+
+    # Pass a dict to match your current create_access_token signature
+    token = create_access_token({"sub": str(user_instance.id)})
+
+    return AuthResult(user=user_instance, token=token)
 
 
 def initiate_password_reset(email):

@@ -37,23 +37,34 @@ def register(data: RegisterRequest):
     })
 
 @router.post("/login", response_model=TokenResponse)
-def login(data: LoginRequest, response: Response):
-    token = authenticate_user(data.email, data.password)
-    if not token:
+def login(data: LoginRequest, response: Response, db: Session = Depends(get_db)):
+    auth = authenticate_user(db, data.email, data.password)
+    if not auth:
         raise HTTPException(status_code=401, detail="Invalid credentials")
 
-    response.set_cookie(
-        key="session_token",
-        value=token,
-        httponly=True,
-        secure=True,
-        samesite="none",
-        max_age=3600,
-        domain=".azronix.xyz",
-        path="/"
+    # log activity with auth.user.id
+    log_user_activity(
+        db=db,
+        user_id=auth.user.id,
+        activity_type="login",
+        message="User logged in successfully"
     )
 
-    return {"session_token": token, "token_type": "bearer"}
+    # set http-only cookie
+    response.set_cookie(
+        key="session_token",
+        value=auth.token,
+        httponly=True,
+        secure=True,          # True in prod (HTTPS); for local dev without HTTPS you may need False
+        samesite="none",      # "lax" if same-site; "none" for cross-site (requires secure=True)
+        max_age=3600,
+        path="/",
+        # domain=".yourdomain.tld"  # set in prod if using subdomains
+    )
+
+    # still return body for Swagger and clients
+    return {"access_token": auth.token, "token_type": "bearer"}
+
 
 @router.post("/forgot-password")
 def forgot_password(data: ForgotPasswordRequest):

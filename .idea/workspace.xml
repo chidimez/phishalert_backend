@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes" />
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes">
+      <change afterPath="$PROJECT_DIR$/models/user_activity_log.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/activity_logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mailbox.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,15 +157,7 @@
       <workItem from="1754536404001" duration="6199000" />
       <workItem from="1754577887945" duration="4092000" />
       <workItem from="1754656540439" duration="377000" />
-      <workItem from="1754658599696" duration="1741000" />
-    </task>
-    <task id="LOCAL-00033" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754006041577</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1754006041577</updated>
+      <workItem from="1754658599696" duration="4888000" />
     </task>
     <task id="LOCAL-00034" summary="fixed cors">
       <option name="closed" value="true" />
@@ -543,7 +543,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754659888811</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="fixing mailbox routes">
+      <option name="closed" value="true" />
+      <created>1754660549156</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1754660549157</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

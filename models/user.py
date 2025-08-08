@@ -1,5 +1,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from datetime import datetime
+
+from sqlalchemy.orm import relationship
+
 from database.session import Base
 
 class User(Base):
@@ -13,3 +16,9 @@ class User(Base):
     is_active = Column(Boolean, default=True)
     reset_code = Column(String, nullable=True)
     reset_code_expires = Column(DateTime, nullable=True)
+
+    activity_logs = relationship(
+        "UserActivityLog",
+        back_populates="user",
+        cascade="all, delete-orphan"
+    )
