@@ -110,5 +110,5 @@ def logout():
     response = json_response({
         "message": "Logged out"
     })
-    response.delete_cookie(key="access_token")
+    response.delete_cookie(key="session_token")
     return response
