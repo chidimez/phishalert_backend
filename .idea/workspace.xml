@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/phishalert_ai_agent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/phishalert_ai_agent.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -153,15 +149,7 @@
       <workItem from="1754536404001" duration="6199000" />
       <workItem from="1754577887945" duration="4092000" />
       <workItem from="1754656540439" duration="377000" />
-      <workItem from="1754658599696" duration="345000" />
-    </task>
-    <task id="LOCAL-00031" summary="fixed cors origin *">
-      <option name="closed" value="true" />
-      <created>1754005031283</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1754005031283</updated>
+      <workItem from="1754658599696" duration="1141000" />
     </task>
     <task id="LOCAL-00032" summary="fixed cors">
       <option name="closed" value="true" />
@@ -547,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754581403099</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="fixing mailbox routes">
+      <option name="closed" value="true" />
+      <created>1754659127376</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1754659127377</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

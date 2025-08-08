@@ -29,10 +29,10 @@ def initiate_gmail_auth():
 
 @router.get("/callback")
 def gmail_auth_callback(
-    request: Request,
-    db: Session = Depends(get_db),
-    user=Depends(get_current_user),
-    background_tasks: BackgroundTasks
+        request: Request,
+        background_tasks: BackgroundTasks,
+        db: Session = Depends(get_db),
+        user=Depends(get_current_user)
 ):
     flow = get_google_auth_flow()
     flow.fetch_token(authorization_response=str(request.url))
