@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixing mailbox routes">
-      <change afterPath="$PROJECT_DIR$/models/user_activity_log.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/services/activity_logger.py" afterDir="false" />
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="added activity log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mailbox.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,23 +151,7 @@
       <workItem from="1754536404001" duration="6199000" />
       <workItem from="1754577887945" duration="4092000" />
       <workItem from="1754656540439" duration="377000" />
-      <workItem from="1754658599696" duration="4888000" />
-    </task>
-    <task id="LOCAL-00034" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754006407740</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1754006407740</updated>
-    </task>
-    <task id="LOCAL-00035" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754006513132</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1754006513132</updated>
+      <workItem from="1754658599696" duration="6768000" />
     </task>
     <task id="LOCAL-00036" summary="fixed cors">
       <option name="closed" value="true" />
@@ -551,7 +529,23 @@
       <option name="project" value="LOCAL" />
       <updated>1754660549157</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="added activity log">
+      <option name="closed" value="true" />
+      <created>1754663780414</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1754663780414</updated>
+    </task>
+    <task id="LOCAL-00084" summary="added activity log">
+      <option name="closed" value="true" />
+      <created>1754663891070</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1754663891070</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -586,7 +580,8 @@
     <MESSAGE value="db seeders added" />
     <MESSAGE value="fixing get mailbox" />
     <MESSAGE value="fixing mailbox routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing mailbox routes" />
+    <MESSAGE value="added activity log" />
+    <option name="LAST_COMMIT_MESSAGE" value="added activity log" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1754522758677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />

@@ -47,6 +47,7 @@ def login(data: LoginRequest, response: Response, db: Session = Depends(get_db))
         db=db,
         user_id=auth.user.id,
         activity_type="login",
+        title="Login",
         message="User logged in successfully"
     )
 
