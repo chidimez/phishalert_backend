@@ -64,7 +64,7 @@ def login(data: LoginRequest, response: Response, db: Session = Depends(get_db))
     )
 
     # still return body for Swagger and clients
-    return {"access_token": auth.token, "token_type": "bearer"}
+    return {"session_token": auth.token, "token_type": "bearer"}
 
 
 @router.post("/forgot-password")
