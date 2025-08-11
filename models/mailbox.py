@@ -46,6 +46,18 @@ class MailboxConnection(Base):
         cascade="all, delete-orphan"
     )
 
+    # NEW: relationships
+    sync_jobs = relationship(
+        "MailboxSyncJob",
+        back_populates="mailbox_connection",
+        cascade="all, delete-orphan"
+    )
+    emails = relationship(
+        "Email",
+        back_populates="mailbox_connection",
+        cascade="all, delete-orphan"
+    )
+
 
 class MailboxScanSummary(Base):
     __tablename__ = "mailbox_scan_summaries"

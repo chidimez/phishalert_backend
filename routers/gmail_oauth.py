@@ -1,7 +1,4 @@
 # routers/gmail_auth.py
-import os
-from datetime import datetime, timedelta
-
 import requests
 from fastapi import APIRouter, Depends, Request, HTTPException, BackgroundTasks
 from fastapi.responses import RedirectResponse, HTMLResponse
@@ -13,7 +10,7 @@ from services.session import get_db
 from utils.gmail_oauth import get_google_auth_flow
 
 from workers.scan_mailbox import fetch_and_scan_mailbox_background
-from services.scan_first_emails import fetch_first_30_emails
+from services.gmail_ingest import fetch_first_30_emails
 
 router = APIRouter(prefix="/auth/gmail", tags=["Gmail Auth"])
 
@@ -58,7 +55,8 @@ def gmail_auth_callback(
     )
 
     # ✅ Step 1: Sync first 30 emails instantly
-    fetch_first_30_emails(credentials, mailbox.id, db)
+    background_tasks.add_task(fetch_first_30_emails, credentials, mailbox.id)
+    #fetch_first_30_emails(credentials, mailbox.id)
 
     # ✅ Step 2: Background scan remaining
     background_tasks.add_task(fetch_and_scan_mailbox_background, mailbox.id)
