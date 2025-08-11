@@ -9,7 +9,7 @@ from services.mailbox import upsert_mailbox_connection
 from services.session import get_db
 from utils.gmail_oauth import get_google_auth_flow
 
-from workers.scan_mailbox import fetch_and_scan_mailbox_background
+from workers.scan_mailbox import run_backfill_job
 from services.gmail_ingest import fetch_first_30_emails
 
 router = APIRouter(prefix="/auth/gmail", tags=["Gmail Auth"])
@@ -59,7 +59,7 @@ def gmail_auth_callback(
     #fetch_first_30_emails(credentials, mailbox.id)
 
     # ✅ Step 2: Background scan remaining
-    background_tasks.add_task(fetch_and_scan_mailbox_background, mailbox.id)
+    background_tasks.add_task(run_backfill_job, credentials,mailbox.id)
 
     # Send mailbox info to frontend
     html_content = f"""

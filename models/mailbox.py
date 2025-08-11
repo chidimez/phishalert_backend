@@ -1,10 +1,20 @@
 from sqlalchemy import UniqueConstraint, Column, Integer, String, DateTime, func, ForeignKey, Boolean, Enum
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 import enum
 
 
-
 from database.session import Base
+
+from datetime import datetime
+from typing import Optional
+
+class SyncState:
+    PENDING = "pending"
+    RUNNING = "running"
+    SUCCESS = "success"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+
 
 
 class MailboxConnection(Base):
@@ -122,3 +132,31 @@ class MailboxScanStatus(Base):
     completed_at = Column(DateTime(timezone=True), nullable=True)
 
     mailbox = relationship("MailboxConnection", back_populates="scan_statuses")
+
+class MailboxSyncJob(Base):
+    """
+    Tracks each sync run for a mailbox. Great for showing progress and history.
+    """
+    __tablename__ = "mailbox_sync_jobs"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    mailbox_connection_id: Mapped[int] = mapped_column(
+        Integer, ForeignKey("mailbox_connections.id", ondelete="CASCADE"), nullable=False, index=True
+    )
+
+    started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, default=datetime.now)
+    finished_at: Mapped[Optional[datetime]] = mapped_column(DateTime(timezone=True), nullable=True)
+
+    state: Mapped[str] = mapped_column(String(20), nullable=False, default=SyncState.PENDING)
+    processed: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
+    total: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)  # unknown at start
+    last_error: Mapped[Optional[str]] = mapped_column(String(1024), nullable=True)
+
+    # Provider delta cursor (e.g., Gmail historyId / Outlook delta token)
+    provider_cursor: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
+
+    mailbox_connection = relationship(
+        "MailboxConnection",
+        back_populates="sync_jobs"
+    )
+

@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed login" />
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed login">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/email.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/email.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phishalert.db" beforeDir="false" afterPath="$PROJECT_DIR$/phishalert.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/gmail_oauth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/gmail_oauth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/gmail_ingest.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/gmail_ingest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/workers/scan_mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/scan_mailbox.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +79,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.seeder">
+  <component name="RunManager" selected="FastAPI.phishalert_ai_agent">
     <configuration name="seeder" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="phishalert_ai_agent" />
       <option name="ENV_FILES" value="" />
@@ -152,15 +164,7 @@
       <workItem from="1754658599696" duration="6768000" />
       <workItem from="1754665748139" duration="4142000" />
       <workItem from="1754859991900" duration="5063000" />
-      <workItem from="1754887940877" duration="1838000" />
-    </task>
-    <task id="LOCAL-00041" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754010658155</created>
-      <option name="number" value="00041" />
-      <option name="presentableId" value="LOCAL-00041" />
-      <option name="project" value="LOCAL" />
-      <updated>1754010658155</updated>
+      <workItem from="1754887940877" duration="12221000" />
     </task>
     <task id="LOCAL-00042" summary="fixed cors">
       <option name="closed" value="true" />
@@ -546,7 +550,15 @@
       <option name="project" value="LOCAL" />
       <updated>1754889779007</updated>
     </task>
-    <option name="localTasksCounter" value="90" />
+    <task id="LOCAL-00090" summary="fixed login">
+      <option name="closed" value="true" />
+      <created>1754889882137</created>
+      <option name="number" value="00090" />
+      <option name="presentableId" value="LOCAL-00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1754889882137</updated>
+    </task>
+    <option name="localTasksCounter" value="91" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -587,7 +599,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixed login" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1754522758677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/phishalert_ai_agent$seeder.coverage" NAME="seeder Coverage Results" MODIFIED="1754527336173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
+    <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1754895521628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/phishalert_ai_agent$seeder.coverage" NAME="seeder Coverage Results" MODIFIED="1754890698421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
   </component>
 </project>
