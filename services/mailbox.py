@@ -1,4 +1,5 @@
 import os
+from sqlite3 import IntegrityError
 
 import requests
 from sqlalchemy.orm import Session
@@ -19,11 +20,10 @@ from sqlalchemy import desc, func
 
 from models.mailbox import (
     MailboxConnection,
-    MailboxScanSummary,
+    MailboxScan,
     MailboxActivityLog,
 )
-from schemas.mailbox import MailboxConnectionPublic
-
+from schemas.mailbox import MailboxConnectionPublic, MailboxLabelResponse
 
 
 def upsert_mailbox_connection(db: Session, user_id: int, email: str, provider: str, credentials):
@@ -68,8 +68,8 @@ def get_mailboxes_for_user(db: Session, user_id: int, skip: int = 0, limit: int 
     return (
         db.query(MailboxConnection)
         .options(
-            joinedload(MailboxConnection.scan_summaries)
-                .joinedload(MailboxScanSummary.shap_insights),
+            joinedload(MailboxConnection.mailbox_scans)
+                .joinedload(MailboxScan.shap_insights),
             joinedload(MailboxConnection.activity_logs)
         )
         .filter(MailboxConnection.user_id == user_id)
@@ -131,6 +131,52 @@ def reconnect_mailbox(db: Session, user_id: int, mailbox_id: int):
 
     return {"message": "Mailbox reconnected"}
 
+
+# ---------- Service / DB function ----------
+def update_mailbox_label(
+    db: Session, user_id: int, mailbox_id: int, new_label: str
+) -> MailboxLabelResponse:
+    mailbox = (
+        db.query(MailboxConnection)
+        .filter_by(id=mailbox_id, user_id=user_id)
+        .first()
+    )
+    if not mailbox:
+        raise HTTPException(status_code=404, detail="Mailbox not found")
+
+    # new_label has already been validated & trimmed by Pydantic, but we’ll be defensive:
+    new_label = new_label.strip()
+
+    # No-op: return current label if unchanged
+    if mailbox.label == new_label:
+        return MailboxLabelResponse(label=mailbox.label)
+
+    mailbox.label = new_label
+
+    try:
+        db.add(mailbox)
+        db.add(
+            MailboxActivityLog(
+                mailbox_connection_id=mailbox_id,
+                activity_type="label_updated",
+                message=f'Label changed to "{new_label}"',
+            )
+        )
+        db.commit()
+    except IntegrityError:
+        db.rollback()
+        # If you enforce unique labels (per user or globally), surface a friendly error.
+        raise HTTPException(
+            status_code=409,
+            detail="A mailbox with this label already exists.",
+        )
+    except Exception:
+        db.rollback()
+        raise HTTPException(status_code=500, detail="Internal server error")
+
+    return MailboxLabelResponse(label=mailbox.label)
+
+
 def ensure_valid_gmail_token(db: Session, mailbox: MailboxConnection):
     if mailbox.token_expiry < datetime.now(timezone.utc):
         refreshed = refresh_gmail_access_token(mailbox.refresh_token)
@@ -159,11 +205,11 @@ def get_mailbox_with_details(
     if not mailbox:
         return None
 
-    summaries: List[MailboxScanSummary] = (
-        db.query(MailboxScanSummary)
-        .filter(MailboxScanSummary.mailbox_connection_id == mailbox.id)
-        .options(joinedload(MailboxScanSummary.shap_insights))
-        .order_by(desc(MailboxScanSummary.scanned_at))
+    summaries: List[MailboxScan] = (
+        db.query(MailboxScan)
+        .filter(MailboxScan.mailbox_connection_id == mailbox.id)
+        .options(joinedload(MailboxScan.shap_insights))
+        .order_by(desc(MailboxScan.completed_at))
         .limit(summaries_limit)
         .all()
     )
@@ -177,7 +223,7 @@ def get_mailbox_with_details(
     )
 
     # attach for serialization
-    mailbox.scan_summaries = summaries
+    mailbox.mailbox_scans = summaries
     mailbox.activity_logs = logs
 
     return MailboxConnectionPublic.from_orm(mailbox)
@@ -208,24 +254,6 @@ def list_mailboxes_for_user(
     )
     return items, total
 
-def disconnect_mailbox(
-    db: Session,
-    user_id: int,
-    mailbox_id: int,
-) -> bool:
-    mailbox = (
-        db.query(MailboxConnection)
-        .filter(
-            MailboxConnection.id == mailbox_id,
-            MailboxConnection.user_id == user_id,
-        )
-        .first()
-    )
-    if not mailbox:
-        return False
-    mailbox.is_connected = False
-    db.commit()
-    return True
 
 def delete_mailbox(
     db: Session,

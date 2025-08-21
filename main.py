@@ -4,7 +4,7 @@ load_dotenv()
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from routers import auth, gmail_oauth, mailbox
+from routers import auth, gmail_oauth, mailbox, agent, dashboard, account
 from fastapi import FastAPI, Response
 from utils.handlers import http_exception_handler, global_exception_handler
 from starlette.exceptions import HTTPException as StarletteHTTPException
@@ -37,6 +37,12 @@ app.include_router(auth.router, tags=["Authentication"])
 app.include_router(gmail_oauth.router, tags=["Gmail OAuth"])
 
 app.include_router(mailbox.router, tags=["Mailbox"])
+
+app.include_router(agent.router, tags=["Agent"])
+
+app.include_router(dashboard.router, tags=["Dashboard"])
+
+app.include_router(account.router, tags=["Account"])
 #app.include_router(user_settings.router)
 
 

@@ -5,6 +5,7 @@ import base64
 
 import random
 from datetime import datetime, timezone
+from email import message_from_bytes
 from typing import Dict, List, Optional, Tuple, Union, Mapping, Any
 
 from google.oauth2.credentials import Credentials
@@ -12,7 +13,7 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from sqlalchemy.orm import Session
 
-from models.mailbox import MailboxScanSummary, MailboxConnection
+from models.mailbox import MailboxScan, MailboxConnection
 from models.email import Email, EmailAttachment, EmailAnalysis  # <-- adjust names if different
 
 from database.session import SessionLocal
@@ -23,7 +24,6 @@ from database.session import SessionLocal
 import re
 from base64 import urlsafe_b64decode
 from datetime import datetime, timezone
-from email import message_from_bytes
 from email.message import Message
 from email.utils import parsedate_to_datetime
 from typing import Dict, Optional, Tuple, List
@@ -402,14 +402,14 @@ def fetch_first_30_emails_task(credentials: Credentials, mailbox_id: int, db: Se
 
             processed += 1
 
-        summary = MailboxScanSummary(
+        summary = MailboxScan(
             mailbox_connection_id=mailbox_id,
             total_mails_scanned=processed,
             flagged_email_count=flagged_high + flagged_med + flagged_low,
             phishing_high=flagged_high,
             phishing_medium=flagged_med,
             phishing_low=flagged_low,
-            scanned_at=datetime.now(timezone.utc),
+            started_at=datetime.now(timezone.utc),
         )
         db.add(summary)
 

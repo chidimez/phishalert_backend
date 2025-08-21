@@ -4,15 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed login">
+    <list default="true" id="d69fb9e5-5b83-4811-88f6-3cec26a60d36" name="Changes" comment="fixed backend">
+      <change afterPath="$PROJECT_DIR$/agents/threat_agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/ab8a74cfea30_updated_schema.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/agent_stats.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/deep_scan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/schemas/dashboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/account.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/actions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/agent_stats.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/analyzer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/dashboard.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/email.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/llm_client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/policy.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/services/prompts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/agent_enrich.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/parse_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/workers/deep_analyze.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_7_25,_7_05 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_8_7_25__7_05PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/versions/5706f8dfd92b_updated_schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/versions/b14061aad3e8_updated_schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/versions/c2e7333c3876_initial_schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/versions/c94919aeecd5_email_ingestion_analysis_schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeder.py" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/email.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/phishalert.db" beforeDir="false" afterPath="$PROJECT_DIR$/phishalert.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/dashboard.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/gmail_oauth.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/gmail_oauth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schemas/email.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/email.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schemas/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/schemas/mailbox.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/gmail_ingest.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/gmail_ingest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/mailbox.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/workers/scan_mailbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/workers/scan_mailbox.py" afterDir="false" />
@@ -64,7 +100,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Chidimez/Repositories/phishalert_backend&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/chidimez/Repositories/agent_one_final&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -164,47 +200,34 @@
       <workItem from="1754658599696" duration="6768000" />
       <workItem from="1754665748139" duration="4142000" />
       <workItem from="1754859991900" duration="5063000" />
-      <workItem from="1754887940877" duration="12221000" />
-    </task>
-    <task id="LOCAL-00042" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754011354150</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1754011354150</updated>
-    </task>
-    <task id="LOCAL-00043" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754011780526</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1754011780526</updated>
-    </task>
-    <task id="LOCAL-00044" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754011807287</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1754011807287</updated>
-    </task>
-    <task id="LOCAL-00045" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754012438518</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1754012438518</updated>
-    </task>
-    <task id="LOCAL-00046" summary="fixed cors">
-      <option name="closed" value="true" />
-      <created>1754012919429</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1754012919429</updated>
+      <workItem from="1754887940877" duration="12960000" />
+      <workItem from="1754921562031" duration="23000" />
+      <workItem from="1754997934015" duration="3950000" />
+      <workItem from="1755113873949" duration="939000" />
+      <workItem from="1755115001259" duration="101000" />
+      <workItem from="1755255826048" duration="2608000" />
+      <workItem from="1755270323741" duration="3921000" />
+      <workItem from="1755362933437" duration="5851000" />
+      <workItem from="1755370356910" duration="10742000" />
+      <workItem from="1755420780403" duration="8733000" />
+      <workItem from="1755433856599" duration="10975000" />
+      <workItem from="1755445814525" duration="5292000" />
+      <workItem from="1755452209328" duration="2675000" />
+      <workItem from="1755455158708" duration="2019000" />
+      <workItem from="1755459014602" duration="1071000" />
+      <workItem from="1755460438094" duration="2723000" />
+      <workItem from="1755463369868" duration="1049000" />
+      <workItem from="1755465691920" duration="8651000" />
+      <workItem from="1755475969570" duration="335000" />
+      <workItem from="1755476704850" duration="3698000" />
+      <workItem from="1755497204243" duration="367000" />
+      <workItem from="1755498055852" duration="4531000" />
+      <workItem from="1755506458274" duration="1851000" />
+      <workItem from="1755522803060" duration="4437000" />
+      <workItem from="1755627559126" duration="5236000" />
+      <workItem from="1755763123050" duration="2427000" />
+      <workItem from="1755774551954" duration="9388000" />
+      <workItem from="1755784246819" duration="2871000" />
     </task>
     <task id="LOCAL-00047" summary="fixed cors">
       <option name="closed" value="true" />
@@ -558,7 +581,47 @@
       <option name="project" value="LOCAL" />
       <updated>1754889882137</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="fixed gmail sync">
+      <option name="closed" value="true" />
+      <created>1754905896132</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1754905896132</updated>
+    </task>
+    <task id="LOCAL-00092" summary="fixed gmail sync">
+      <option name="closed" value="true" />
+      <created>1754905904169</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1754905904170</updated>
+    </task>
+    <task id="LOCAL-00093" summary="fixed backend">
+      <option name="closed" value="true" />
+      <created>1755508019919</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1755508019921</updated>
+    </task>
+    <task id="LOCAL-00094" summary="fixed backend">
+      <option name="closed" value="true" />
+      <created>1755508326131</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1755508326131</updated>
+    </task>
+    <task id="LOCAL-00095" summary="fixed backend">
+      <option name="closed" value="true" />
+      <created>1755786077675</created>
+      <option name="number" value="00095" />
+      <option name="presentableId" value="LOCAL-00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1755786077675</updated>
+    </task>
+    <option name="localTasksCounter" value="96" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,10 +659,12 @@
     <MESSAGE value="added activity log" />
     <MESSAGE value="fixed token" />
     <MESSAGE value="fixed login" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed login" />
+    <MESSAGE value="fixed gmail sync" />
+    <MESSAGE value="fixed backend" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed backend" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1754895521628" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/phishalert_ai_agent$seeder.coverage" NAME="seeder Coverage Results" MODIFIED="1754890698421" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
+    <SUITE FILE_PATH="coverage/phishalert_ai_agent$phishalert_ai_agent.coverage" NAME="phishalert_ai_agent Coverage Results" MODIFIED="1755784247111" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/phishalert_ai_agent$seeder.coverage" NAME="seeder Coverage Results" MODIFIED="1755783656556" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/database" />
   </component>
 </project>

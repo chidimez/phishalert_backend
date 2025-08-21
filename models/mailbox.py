@@ -1,12 +1,16 @@
-from sqlalchemy import UniqueConstraint, Column, Integer, String, DateTime, func, ForeignKey, Boolean, Enum
-from sqlalchemy.orm import relationship, Mapped, mapped_column
+from sqlalchemy import UniqueConstraint, Column, Integer, String, DateTime, func, ForeignKey, Boolean, Enum, select
+from sqlalchemy.orm import relationship, Mapped, mapped_column, column_property
 import enum
-
 
 from database.session import Base
 
 from datetime import datetime
 from typing import Optional
+
+
+# ----------------------------
+# 🔁 Enums
+# ----------------------------
 
 class SyncState:
     PENDING = "pending"
@@ -16,6 +20,17 @@ class SyncState:
     CANCELLED = "cancelled"
 
 
+class ScanStateEnum(str, enum.Enum):
+    pending = "pending"
+    in_progress = "in_progress"
+    completed = "completed"
+    failed = "failed"
+    cancelled = "cancelled"
+
+
+# ----------------------------
+# 📬 MailboxConnection
+# ----------------------------
 
 class MailboxConnection(Base):
     __tablename__ = "mailbox_connections"
@@ -37,9 +52,9 @@ class MailboxConnection(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), default=func.now(), onupdate=func.now())
 
-    # Add cascades to related tables
-    scan_summaries = relationship(
-        "MailboxScanSummary",
+    # Relationships
+    mailbox_scans = relationship(
+        "MailboxScan",
         back_populates="mailbox_connection",
         cascade="all, delete-orphan"
     )
@@ -50,18 +65,12 @@ class MailboxConnection(Base):
         cascade="all, delete-orphan"
     )
 
-    scan_statuses = relationship(
-        "MailboxScanStatus",
-        back_populates="mailbox",
-        cascade="all, delete-orphan"
-    )
-
-    # NEW: relationships
     sync_jobs = relationship(
         "MailboxSyncJob",
         back_populates="mailbox_connection",
         cascade="all, delete-orphan"
     )
+
     emails = relationship(
         "Email",
         back_populates="mailbox_connection",
@@ -69,74 +78,82 @@ class MailboxConnection(Base):
     )
 
 
-class MailboxScanSummary(Base):
-    __tablename__ = "mailbox_scan_summaries"
+# ----------------------------
+# ✅ Merged: MailboxScan
+# ----------------------------
+
+class MailboxScan(Base):
+    __tablename__ = "mailbox_scans"
 
     id = Column(Integer, primary_key=True)
-    mailbox_connection_id = Column(Integer, ForeignKey("mailbox_connections.id"), nullable=False)
-    scanned_at = Column(DateTime, nullable=False, default=func.now())
+
+    mailbox_connection_id = Column(Integer, ForeignKey("mailbox_connections.id", ondelete="CASCADE"), nullable=False)
+
+    # Status/progress
+    status = Column(Enum(ScanStateEnum), default=ScanStateEnum.pending, nullable=False)
+    progress = Column(Integer, default=0)
+    message = Column(String(512), nullable=True)
+    started_at = Column(DateTime(timezone=True), default=func.now())
+    completed_at = Column(DateTime(timezone=True), nullable=True)
+
+    # Results
     total_mails_scanned = Column(Integer, nullable=False, default=0)
     flagged_email_count = Column(Integer, nullable=False, default=0)
-
     phishing_high = Column(Integer, nullable=False, default=0)
     phishing_medium = Column(Integer, nullable=False, default=0)
     phishing_low = Column(Integer, nullable=False, default=0)
 
+    mailbox_connection = relationship("MailboxConnection", back_populates="mailbox_scans")
 
-    mailbox_connection = relationship("MailboxConnection", back_populates="scan_summaries")
     shap_insights = relationship(
         "MailboxShapInsight",
-        back_populates="scan_summary",
+        back_populates="mailbox_scan",
         cascade="all, delete-orphan"
     )
 
+    user_id = column_property(
+        select(MailboxConnection.user_id)
+        .where(MailboxConnection.id == mailbox_connection_id)
+        .correlate_except(MailboxConnection)
+        .scalar_subquery()
+    )
+
+
+# ----------------------------
+# 📊 SHAP Insight (Updated FK)
+# ----------------------------
 
 class MailboxShapInsight(Base):
     __tablename__ = "mailbox_shap_insights"
 
     id = Column(Integer, primary_key=True)
-    scan_summary_id = Column(Integer, ForeignKey("mailbox_scan_summaries.id"), nullable=False)
+    mailbox_scan_id = Column(Integer, ForeignKey("mailbox_scans.id", ondelete="CASCADE"), nullable=False)
     insight_feature = Column(String(100), nullable=False)  # e.g., 'suspicious_domain'
 
-    scan_summary = relationship("MailboxScanSummary", back_populates="shap_insights")
+    mailbox_scan = relationship("MailboxScan", back_populates="shap_insights")
+
+
+# ----------------------------
+# 📜 Activity Log
+# ----------------------------
 
 class MailboxActivityLog(Base):
     __tablename__ = "mailbox_activity_logs"
 
     id = Column(Integer, primary_key=True)
-    mailbox_connection_id = Column(Integer, ForeignKey("mailbox_connections.id"), nullable=False)
-    activity_type = Column(String(50), nullable=False)  # 'scan_started', 'token_refreshed'
+    mailbox_connection_id = Column(Integer, ForeignKey("mailbox_connections.id", ondelete="CASCADE"), nullable=False)
+    activity_type = Column(String(50), nullable=False)  # e.g. 'scan_started'
     message = Column(String(1024), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     mailbox_connection = relationship("MailboxConnection", back_populates="activity_logs")
 
 
-class ScanStateEnum(str, enum.Enum):
-    pending = "pending"
-    in_progress = "in_progress"
-    completed = "completed"
-    failed = "failed"
-
-
-class MailboxScanStatus(Base):
-    __tablename__ = "mailbox_scan_statuses"
-
-    id = Column(Integer, primary_key=True)
-    mailbox_id = Column(Integer, ForeignKey("mailbox_connections.id"), nullable=False)
-    status = Column(Enum(ScanStateEnum), default=ScanStateEnum.pending)
-    progress = Column(Integer, default=0)  # 0 to 100
-    message = Column(String(512), nullable=True)
-
-    started_at = Column(DateTime(timezone=True), default=func.now())
-    completed_at = Column(DateTime(timezone=True), nullable=True)
-
-    mailbox = relationship("MailboxConnection", back_populates="scan_statuses")
+# ----------------------------
+# 🔄 Mailbox Sync Jobs
+# ----------------------------
 
 class MailboxSyncJob(Base):
-    """
-    Tracks each sync run for a mailbox. Great for showing progress and history.
-    """
     __tablename__ = "mailbox_sync_jobs"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
@@ -149,14 +166,11 @@ class MailboxSyncJob(Base):
 
     state: Mapped[str] = mapped_column(String(20), nullable=False, default=SyncState.PENDING)
     processed: Mapped[int] = mapped_column(Integer, nullable=False, default=0)
-    total: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)  # unknown at start
+    total: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     last_error: Mapped[Optional[str]] = mapped_column(String(1024), nullable=True)
-
-    # Provider delta cursor (e.g., Gmail historyId / Outlook delta token)
     provider_cursor: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
 
     mailbox_connection = relationship(
         "MailboxConnection",
         back_populates="sync_jobs"
     )
-

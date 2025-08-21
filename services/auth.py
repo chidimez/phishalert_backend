@@ -79,7 +79,7 @@ def register_user(email, firstname, lastname, password):
     )
     db.add(new_user)
     db.commit()
-    send_email("Welcome to PhishAlert", email, "welcome.html", {"email": email})
+#    send_email("Welcome to PhishAlert", email, "welcome.html", {"email": email})
 
     log_user_activity(
         db=db,

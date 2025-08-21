@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import exists
 
 from models import Email
-from models.mailbox import MailboxSyncJob, SyncState, MailboxConnection, MailboxScanSummary
+from models.mailbox import MailboxSyncJob, SyncState, MailboxConnection, MailboxScan
 from services.gmail_ingest import _dummy_analyze, _save_email, _save_analysis
 from database.session import SessionLocal
 
@@ -274,14 +274,14 @@ def backfill_all_emails_task(
                 break
 
         # Finalize summary + mailbox + job
-        summary = MailboxScanSummary(
+        summary = MailboxScan(
             mailbox_connection_id=mailbox_id,
             total_mails_scanned=processed,
             flagged_email_count=flagged_high + flagged_med + flagged_low,
             phishing_high=flagged_high,
             phishing_medium=flagged_med,
             phishing_low=flagged_low,
-            scanned_at=datetime.now(timezone.utc),
+            completed_at=datetime.now(timezone.utc),
         )
         db.add(summary)
 

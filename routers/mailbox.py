@@ -2,11 +2,14 @@ from fastapi import APIRouter, Depends, Query
 
 from models import MailboxConnection
 from models.mailbox import MailboxSyncJob, SyncState
-from schemas.mailbox import MailboxConnectionDetailOut
+from schemas.email import EmailListResponse, EmailQueryParams, EmailOut, PaginationMeta
+from schemas.mailbox import MailboxConnectionDetailOut, MailboxLabelResponse, MailboxLabelRequest, \
+    MailboxConnectionPublic
 from services.auth import get_current_user
 from models.user import User
+from services.email import list_emails_for_mailbox, get_email_detail
 from services.mailbox import get_mailboxes_for_user, delete_single_mailbox, delete_all_mailboxes, disconnect_mailbox, \
-    reconnect_mailbox, get_mailbox_with_details
+    reconnect_mailbox, get_mailbox_with_details, update_mailbox_label
 from utils.handlers import json_response
 from services.session import get_db
 from sqlalchemy.orm import Session
@@ -36,7 +39,7 @@ def list_mailboxes(
     "total": db.query(MailboxConnection).filter_by(user_id=user.id).count()
 }
 
-@router.get("/{mailbox_id}", response_model=MailboxConnectionDetailOut)
+@router.get("/{mailbox_id}", response_model=MailboxConnectionPublic)
 def get_mailbox(
     mailbox_id: int,
     summaries_limit: int = Query(5, ge=1, le=50),
@@ -60,6 +63,30 @@ def get_mailbox(
     if not result:
         raise HTTPException(status_code=404, detail="Mailbox not found")
     return result
+
+# routers/mailbox.py
+from schemas.email import EmailOut, EmailListResponse, PaginationMeta
+import math
+
+@router.get("/{mailbox_id}/emails", response_model=EmailListResponse)
+def get_mailbox_emails(
+    mailbox_id: int,
+    q: EmailQueryParams = Depends(),
+    db: Session = Depends(get_db),
+    user = Depends(get_current_user),
+):
+    items, total = list_emails_for_mailbox(db, user.id, mailbox_id, q)
+    data = [EmailOut.model_validate(e, from_attributes=True) for e in items]
+    return {"data": data, "meta": {"page": q.page, "size": q.size, "total": total}}
+
+@router.get("/email/{email_id}", response_model=EmailOut)
+def get_single_email_under_mailbox_namespace(
+    email_id: int,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+):
+    em = get_email_detail(db, user.id, email_id)
+    return EmailOut.model_validate(em, from_attributes=True)
 
 @router.delete("/{mailbox_id}")
 def delete_mailbox(
@@ -91,6 +118,18 @@ def disconnect_user_mailbox(
     user: User = Depends(get_current_user)
 ):
     return disconnect_mailbox(db, user.id, mailbox_id)
+
+# ---------- Router handler (calls service) ----------
+@router.patch("/{mailbox_id}/label", response_model=MailboxLabelResponse)
+def update_user_mailbox_label(
+    mailbox_id: int,
+    payload: MailboxLabelRequest,
+    db: Session = Depends(get_db),
+    user: User = Depends(get_current_user),
+):
+    return update_mailbox_label(db, user.id, mailbox_id, payload.label)
+
+
 
 @router.post("/mailboxes/{mailbox_id}/sync-jobs/{job_id}/cancel", status_code=status.HTTP_202_ACCEPTED)
 def cancel_sync_job(

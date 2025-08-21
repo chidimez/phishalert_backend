@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from pydantic import BaseModel, EmailStr
 from typing import Optional, Literal
 
@@ -28,6 +30,14 @@ class UserResponse(BaseModel):
     email: str
     firstname: str | None = None
     lastname: str | None = None
+    # New: preferences
+    notify_email_enabled :bool
+    notify_sms_enabled :bool
+    auto_policy_enabled :bool
+
+    # New: deletion workflow
+    deletion_requested_at : Optional[datetime]
+    is_deleted :bool
     is_active: bool
 
     class Config:

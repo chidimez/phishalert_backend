@@ -22,8 +22,6 @@ def initiate_gmail_auth():
     return RedirectResponse(auth_url)
 
 
-
-
 @router.get("/callback")
 def gmail_auth_callback(
         request: Request,
