@@ -34,6 +34,7 @@ pyparsing==3.2.3
 python-dotenv==1.1.1
 python-jose==3.5.0
 python-multipart==0.0.20
+openai==1.101.0
 requests==2.32.4
 requests-oauthlib==2.0.0
 rsa==4.9.1
